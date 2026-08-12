@@ -79,10 +79,9 @@
       <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
       <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
     </symbol>
-    <!-- HomeAdvisor mark: orange house glyph, the brand color -->
-    <symbol id="ha-logo" viewBox="0 0 48 48">
-      <path d="M24 6 L44 23 L44 42 L4 42 L4 23 Z" fill="#FB8B1E"/>
-      <path d="M20 42 L20 32 L28 32 L28 42 Z" fill="#fff"/>
+    <!-- HomeAdvisor mark: current official icon (HomeAdvisor orange #F68315) -->
+    <symbol id="ha-logo" viewBox="0 0 24 24">
+      <path fill="#F68315" d="M15.98 2.442H8.02L0 10.46h2.275l6.882-6.88 6.881 6.881H24l-8.02-8.018m-.492 9.348L9.157 5.459 4.01 10.605v4.987a1.33 1.33 0 0 0 1.329 1.329h6.077l4.637 4.637v-4.637h2.598a1.33 1.33 0 0 0 1.33-1.33V11.79h-4.494Z"/>
     </symbol>
     <!-- Bespoke line marks for stats / trust (currentColor, match the accent) -->
     <symbol id="ic-shield" viewBox="0 0 24 24">
@@ -137,11 +136,11 @@
         <div class="hero__left">
           <p class="label">Cordova & the Memphis metro</p>
           <h1 class="hero__title">Your roofer in the Cordova &amp; Memphis area.</h1>
-          <p class="hero__sub">Residential and commercial roofing: repairs, replacements, inspections. Same-day estimates, real follow-through, and a crew that cleans up before you get home.</p>
+          <p class="hero__sub">Residential and commercial roofing:<br>Repairs, replacements, inspections. Same-day estimates and real follow-through.</p>
 
           <ul class="herostats" aria-label="At a glance">
             <li class="herostat">
-              <span class="herostat__num">5.0<i>★</i></span>
+              <span class="herostat__num"><svg class="herostat__ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#g-logo"/></svg>5.0</span>
               <span class="herostat__lbl">Google rating</span>
             </li>
             <li class="herostat">
@@ -149,8 +148,8 @@
               <span class="herostat__lbl">years in business</span>
             </li>
             <li class="herostat">
-              <span class="herostat__num">#8337</span>
-              <span class="herostat__lbl">TN license, active</span>
+              <span class="herostat__num"><svg class="herostat__ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#ha-logo"/></svg>5.0</span>
+              <span class="herostat__lbl">on HomeAdvisor</span>
             </li>
             <li class="herostat">
               <span class="herostat__num">A+</span>
@@ -182,10 +181,6 @@
             <div class="field">
               <label for="h-phone">Phone</label>
               <input id="h-phone" name="phone" type="tel" autocomplete="tel" required />
-            </div>
-            <div class="field">
-              <label for="h-email">Email</label>
-              <input id="h-email" name="email" type="email" autocomplete="email" />
             </div>
             <div class="field">
               <label for="h-type">Type of job</label>
