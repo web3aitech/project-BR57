@@ -317,13 +317,25 @@ a.tel:hover { color: var(--accent); }
 
 /* On short / landscape viewports, let the hero shrink so it doesn't dominate */
 @media (max-height: 30rem) and (orientation: landscape) {
-  .hero, .hero .hero__shell { min-height: auto; height: auto; }
+  .hero, .hero .hero__shell { min-height: auto; height: auto; overflow: visible; }
   .hero { margin-top: 0; }
   .hero .hero__shell { padding-top: var(--header-h); }
 }
 
-/* Stacked (mobile) hero: compact so all content fits one screen. */
+/* Stacked (mobile) hero: the under-header pull-up + fixed 100svh + overflow
+   clip cuts the top off once content stacks taller than the viewport. So on
+   mobile we drop the pull-up, let the hero start below the header normally,
+   use min-height (not fixed height) so it can grow, and allow scroll instead
+   of clipping. Desktop keeps the seamless under-header full-screen treatment. */
 @media (max-width: 49.99rem) {
+  .hero { height: auto; min-height: 100svh; margin-top: 0; overflow: visible; }
+  .hero .hero__shell {
+    height: auto;
+    min-height: 100svh;
+    padding-top: var(--section-pad);
+    padding-bottom: var(--section-pad);
+    overflow: visible;
+  }
   .hero .hero__shell { gap: var(--s-1); }
   .hero__title { font-size: clamp(2.1rem, 7.6vw, 3rem); }
   .hero__sub { font-size: 0.85rem; }
