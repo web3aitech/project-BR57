@@ -86,6 +86,24 @@
       <path d="M24 6 L44 23 L44 42 L4 42 L4 23 Z" fill="#FB8B1E"/>
       <path d="M20 42 L20 32 L28 32 L28 42 Z" fill="#fff"/>
     </symbol>
+    <!-- Bespoke line marks for the remaining trust items (currentColor, match the accent) -->
+    <symbol id="ic-shield" viewBox="0 0 24 24">
+      <path d="M12 3 L20 6 V12 C20 16.5 16.5 20 12 21.5 C7.5 20 4 16.5 4 12 V6 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M8.5 12 L11 14.5 L15.5 9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M12 7.5 V12 L15.5 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-badge" viewBox="0 0 24 24">
+      <path d="M12 2.5 L14.8 5 L18.5 4.6 L18.9 8.3 L22 10.5 L20.2 14 L22 17.5 L18.9 19.7 L18.5 23.4 L14.8 23 L12 25.5 L9.2 23 L5.5 23.4 L5.1 19.7 L2 17.5 L3.8 14 L2 10.5 L5.1 8.3 L5.5 4.6 L9.2 5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" transform="scale(0.92) translate(1,1)"/>
+      <path d="M9 12 L11.3 14.3 L15.5 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" transform="scale(0.92) translate(1,1)"/>
+    </symbol>
+    <symbol id="ic-doc" viewBox="0 0 24 24">
+      <path d="M6 3 H15 L19 7 V21 H6 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M15 3 V7 H19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M9 12 H16 M9 15.5 H16 M9 18.5 H13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
   </svg>
 
   <!-- ============================================================
@@ -140,12 +158,12 @@
 
         <!-- Trust strip folded into hero bottom -->
         <div class="truststrip">
-          <span class="truststrip__item"><svg viewBox="0 0 48 48" style="width:1rem" aria-hidden="true"><use href="#g-logo"/></svg> <b>5.0</b> <span class="truststrip__star">★★★★★</span> on Google</span>
-          <span class="truststrip__item"><svg viewBox="0 0 48 48" style="width:1rem" aria-hidden="true"><use href="#ha-logo"/></svg> <b>5.0</b> on HomeAdvisor</span>
-          <span class="truststrip__item">Licensed <b>#8337</b></span>
-          <span class="truststrip__item"><b>~10 yrs</b> in business</span>
-          <span class="truststrip__item">BBB <b>A+</b></span>
-          <span class="truststrip__item">Free estimates</span>
+          <span class="truststrip__item"><svg class="truststrip__ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#g-logo"/></svg> <b>5.0</b> <span class="truststrip__star">★★★★★</span> on Google</span>
+          <span class="truststrip__item"><svg class="truststrip__ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#ha-logo"/></svg> <b>5.0</b> on HomeAdvisor</span>
+          <span class="truststrip__item"><svg class="truststrip__ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-shield"/></svg> Licensed <b>#8337</b></span>
+          <span class="truststrip__item"><svg class="truststrip__ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-clock"/></svg> <b>~10 yrs</b> in business</span>
+          <span class="truststrip__item"><svg class="truststrip__ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-badge"/></svg> BBB <b>A+</b></span>
+          <span class="truststrip__item"><svg class="truststrip__ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-doc"/></svg> Free estimates</span>
         </div>
       </div>
     </section>

@@ -238,6 +238,7 @@ section > .shell {
 .truststrip__item { display: inline-flex; align-items: center; gap: 0.35em; justify-content: center; }
 .truststrip__item b { color: var(--ink-strong); font-weight: 600; }
 .truststrip__star { color: var(--gold); letter-spacing: 0.05em; }
+.truststrip__ic { width: 1rem; height: 1rem; color: var(--accent); flex: 0 0 auto; }
 
 /* ============================================================
    Trust / Why-us, asymmetric, no 3 equal stock-icon cards
