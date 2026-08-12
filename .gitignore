@@ -1,0 +1,8 @@
+# Claude Code local settings (not part of the deployed site)
+.claude/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+node_modules/

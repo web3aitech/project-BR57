@@ -1,0 +1,96 @@
+/* ============================================================
+   Better Roofing 57. Design Tokens.
+   "Slate & patina, the 57 as signature."
+   Swap brand values here to re-skin a future client site.
+   ============================================================ */
+
+:root {
+  /* ---- Color (material-driven, not AI defaults) ----
+     slate  = real slate / weathered asphalt shingle
+     bone   = neutral-cool paper (NOT warm cream)
+     patina = oxidized copper flashing, the ONE accent */
+  --slate-900: #2a2e33;   /* deepest ink */
+  --slate-700: #373c42;   /* primary ink / text */
+  --slate-600: #414649;   /* (reserved) */
+  --slate-500: #555b62;   /* secondary text */
+  --slate-400: #71787f;   /* muted */
+  --slate-300: #9aa0a6;   /* hairlines on dark */
+  --slate-200: #c3c7cc;   /* hairlines on light */
+  --bone-100:  #eceae4;   /* page surface */
+  --bone-200:  #e7e5e0;   /* card surface */
+  --bone-300:  #dcdad4;   /* divider on light */
+  --patina:    #5c8a77;   /* oxidized copper, the one accent */
+  --patina-700:#466b5c;   /* patina pressed/hover */
+  --patina-050:#eef2f0;   /* patina tint (very subtle) */
+  --gold:      #f9ab00;   /* Google review star gold */
+
+  /* semantic aliases */
+  --ink:        var(--slate-700);
+  --ink-strong: var(--slate-900);
+  --muted:      var(--slate-500);
+  --surface:    var(--bone-100);
+  --surface-2:  var(--bone-200);
+  --rule:       var(--bone-300);
+  --rule-dark:  var(--slate-300);
+  --accent:     var(--patina);
+  --accent-press: var(--patina-700);
+
+  /* ---- Type (paired display + body; no Inter/Geist/one-sans) ---- */
+  --font-display: "Libre Caslon Text", "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-label: var(--font-body); /* uppercase + tracking, NOT monospace */
+
+  /* Modular type scale (1.250). Compact: sections are full-viewport. */
+  --fs-300: 0.8125rem;   /* 13, labels */
+  --fs-400: 1rem;        /* 16, body */
+  --fs-500: 1.25rem;     /* 20, lead */
+  --fs-600: 1.35rem;     /* h3 */
+  --fs-700: 1.85rem;     /* h2 */
+  --fs-800: clamp(2.25rem, 5.5vw, 3.4rem);  /* h1, hero */
+  --fs-900: clamp(3.5rem, 14vw, 8rem);      /* the 57, signature */
+
+  /* Tight, considered leading/tracking (sloppy defaults are a tell) */
+  --lh-tight: 1.05;     /* display */
+  --lh-snug:  1.2;      /* headings */
+  --lh-body:  1.55;     /* body */
+  --track-tight: -0.02em;  /* display */
+  --track-label: 0.14em;   /* uppercase labels */
+
+  /* ---- Spacing rhythm (real whitespace, not padding) ---- */
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2rem;
+  --s-5: 3rem;
+  --s-6: 4rem;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+
+  /* ---- Full-viewport sections ----
+     Each section fills exactly the visible area BELOW the sticky header,
+     so a section + the header = one screen with no internal scroll.
+     100svh handles mobile browser chrome. */
+  --header-h: 3.75rem;
+  --section-h: calc(100svh - 3.75rem);
+  --section-pad: clamp(2.25rem, 5vh, 3.5rem); /* uniform top & bottom for every section = consistent medium rhythm */
+
+  /* ---- Layout ---- */
+  --measure: 68rem;
+  --measure-wide: 80rem;
+
+  /* ---- Edges / shape ----
+     Scale radius with element size; nested radii differ.
+     Avoid uniform rounded-everywhere (the tell). */
+  --r-sharp: 0;          /* cards, dividers, hard edge = structural */
+  --r-button: 999px;     /* pill CTA only */
+  --r-input: 2px;        /* form fields, near-square, deliberate */
+  --r-card: 10px;       /* review / gallery cards, modest */
+
+  /* ---- Motion (one orchestrated moment; reduced-motion respected) ---- */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 520ms;
+  --marquee-dur: 38s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur: 0ms; --marquee-dur: 0ms; }
+}
