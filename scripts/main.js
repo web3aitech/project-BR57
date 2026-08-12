@@ -1,6 +1,7 @@
 /* ============================================================
    Better Roofing 57. Minimal interactivity.
-   One orchestrated hero load-in + FAQ accordion + form submit.
+   One orchestrated hero load-in + FAQ accordion + two estimate
+   forms (both post to Web3Forms) + a past-work carousel.
    No scroll-fade-everywhere. Restraint.
    ============================================================ */
 
@@ -27,8 +28,10 @@
       items.forEach(function (other) {
         if (other !== item) {
           other.setAttribute("data-open", "false");
-          other.querySelector(".faq__q").setAttribute("aria-expanded", "false");
-          other.querySelector(".faq__a").style.maxHeight = null;
+          var ob = other.querySelector(".faq__q");
+          if (ob) ob.setAttribute("aria-expanded", "false");
+          var oa = other.querySelector(".faq__a");
+          if (oa) oa.style.maxHeight = null;
         }
       });
       if (isOpen) {
@@ -43,13 +46,14 @@
     });
   });
 
-  // ---- Contact form ----
-  // Posts to Web3Forms (no backend). Replace access_key in the HTML with the
-  // client's key. Falls back to a graceful confirmation if the key is the
-  // placeholder, so the site works for review before the client signs up.
-  var form = document.getElementById("estimate-form");
-  var sent = document.getElementById("form-sent");
-  if (form) {
+  // ---- Estimate forms (hero + contact). Both post to Web3Forms. ----
+  // Replace the access_key value in the HTML with the client's key.
+  // With the placeholder key still in place, the form shows a local
+  // confirmation without sending, so the site works for review before
+  // the client signs up.
+  var forms = document.querySelectorAll("form[data-estimate]");
+  forms.forEach(function (form) {
+    var sent = form.querySelector(".form__sent");
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var key = (form.querySelector('[name="access_key"]') || {}).value;
@@ -84,5 +88,33 @@
           alert("Sorry, the form didn't send. Please call (901) 484-5717.");
         });
     });
-  }
+  });
+
+  // ---- Past-work carousel: prev / next buttons scroll one slide ----
+  var carousels = document.querySelectorAll("[data-carousel]");
+  carousels.forEach(function (carousel) {
+    var track = carousel.querySelector("[data-track]");
+    var prev = carousel.querySelector("[data-prev]");
+    var next = carousel.querySelector("[data-next]");
+    if (!track) return;
+
+    function step() {
+      var slide = track.querySelector(".slide");
+      if (!slide) return track.clientWidth * 0.8;
+      // gap + slide width advances roughly one slide
+      var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 16;
+      return slide.getBoundingClientRect().width + gap;
+    }
+
+    if (prev) {
+      prev.addEventListener("click", function () {
+        track.scrollBy({ left: -step(), behavior: "smooth" });
+      });
+    }
+    if (next) {
+      next.addEventListener("click", function () {
+        track.scrollBy({ left: step(), behavior: "smooth" });
+      });
+    }
+  });
 })();

@@ -1,39 +1,31 @@
 /* ============================================================
    Better Roofing 57. Design Tokens.
-   "Slate & patina, the 57 as signature."
+   Dark-blue accent on white; one navy section + footer.
    Swap brand values here to re-skin a future client site.
    ============================================================ */
 
 :root {
-  /* ---- Color (material-driven, not AI defaults) ----
-     slate  = real slate / weathered asphalt shingle
-     bone   = neutral-cool paper (NOT warm cream)
-     patina = oxidized copper flashing, the ONE accent */
-  --slate-900: #2a2e33;   /* deepest ink */
-  --slate-700: #373c42;   /* primary ink / text */
-  --slate-600: #414649;   /* (reserved) */
-  --slate-500: #555b62;   /* secondary text */
-  --slate-400: #71787f;   /* muted */
-  --slate-300: #9aa0a6;   /* hairlines on dark */
-  --slate-200: #c3c7cc;   /* hairlines on light */
-  --bone-100:  #eceae4;   /* page surface */
-  --bone-200:  #e7e5e0;   /* card surface */
-  --bone-300:  #dcdad4;   /* divider on light */
-  --patina:    #5c8a77;   /* oxidized copper, the one accent */
-  --patina-700:#466b5c;   /* patina pressed/hover */
-  --patina-050:#eef2f0;   /* patina tint (very subtle) */
-  --gold:      #f9ab00;   /* Google review star gold */
+  /* ---- Color (client direction: dark-blue accent on white) ----
+     ink     = neutral text (charcoal, not pure black)
+     surface = white page (NOT warm "AI sand" cream)
+     accent  = dark blue, the one brand color
+     ink-deep= navy for the one dark section + footer */
+  --ink:        #3a3f45;   /* body text */
+  --ink-strong: #1c1f23;   /* headings */
+  --muted:      #6b7178;   /* secondary text */
+  --surface:    #ffffff;   /* page surface, white */
+  --surface-2:  #f5f6f8;   /* card / alt surface */
+  --rule:       #e6e8eb;   /* divider on light */
+  --accent:     #1b3a6b;   /* dark blue, the one accent */
+  --accent-700: #14284c;   /* pressed / hover */
+  --accent-050: #eef2f8;   /* subtle blue tint (focus) */
+  --accent-on-dark: #8fb0d9; /* light blue for labels/marks on dark sections */
+  --ink-deep:   #152a4e;   /* dark-navy section + footer bg */
+  --rule-dark:  #2c3f5e;  /* divider on dark */
+  --gold:       #f9ab00;  /* Google review star gold */
 
-  /* semantic aliases */
-  --ink:        var(--slate-700);
-  --ink-strong: var(--slate-900);
-  --muted:      var(--slate-500);
-  --surface:    var(--bone-100);
-  --surface-2:  var(--bone-200);
-  --rule:       var(--bone-300);
-  --rule-dark:  var(--slate-300);
-  --accent:     var(--patina);
-  --accent-press: var(--patina-700);
+  /* semantic alias kept for button hover state */
+  --accent-press: var(--accent-700);
 
   /* ---- Type (paired display + body; no Inter/Geist/one-sans) ---- */
   --font-display: "Libre Caslon Text", "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -69,8 +61,8 @@
      Each section fills exactly the visible area BELOW the sticky header,
      so a section + the header = one screen with no internal scroll.
      100svh handles mobile browser chrome. */
-  --header-h: 3.75rem;
-  --section-h: calc(100svh - 3.75rem);
+  --header-h: 4.25rem;
+  --section-h: calc(100svh - 4.25rem);
   --section-pad: clamp(2.25rem, 5vh, 3.5rem); /* uniform top & bottom for every section = consistent medium rhythm */
 
   /* ---- Layout ---- */

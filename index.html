@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Better Roofing 57. Roofing Contractor in Cordova, TN.</title>
   <meta name="description" content="Better Roofing 57 LLC. Residential and commercial roofing in Cordova, TN and the Memphis metro. Roof repair, replacement, inspections. 5.0-star rated, licensed, free estimates. Call (901) 484-5717." />
-  <meta name="theme-color" content="#373c42" />
+  <meta name="theme-color" content="#1b3a6b" />
+  <link rel="icon" type="image/png" href="assets/images/better-roofing-57-favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon-180x180.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Paired display + body: Libre Caslon Text (display) + IBM Plex Sans (body). No Inter/Geist. -->
@@ -69,12 +71,8 @@
 </head>
 <body>
 
-  <!-- Reusable marks: bespoke roofline + the official 4-color Google G -->
+  <!-- Reusable marks: the official 4-color Google G + line icons -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="roofline" viewBox="0 0 48 48">
-      <path d="M4 26 L24 8 L44 26" fill="none" stroke="#5c8a77" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
-      <path d="M10 26 L24 14 L38 26 L38 40 L10 40 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="miter"/>
-    </symbol>
     <symbol id="g-logo" viewBox="0 0 48 48">
       <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
       <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
@@ -86,7 +84,7 @@
       <path d="M24 6 L44 23 L44 42 L4 42 L4 23 Z" fill="#FB8B1E"/>
       <path d="M20 42 L20 32 L28 32 L28 42 Z" fill="#fff"/>
     </symbol>
-    <!-- Bespoke line marks for the remaining trust items (currentColor, match the accent) -->
+    <!-- Bespoke line marks for stats / trust (currentColor, match the accent) -->
     <symbol id="ic-shield" viewBox="0 0 24 24">
       <path d="M12 3 L20 6 V12 C20 16.5 16.5 20 12 21.5 C7.5 20 4 16.5 4 12 V6 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
       <path d="M8.5 12 L11 14.5 L15.5 9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -112,17 +110,14 @@
   <header class="site-head">
     <div class="site-head__inner">
       <a class="brand" href="#top" aria-label="Better Roofing 57, home">
-        <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false" style="color:var(--ink-strong)">
-          <use href="#roofline" />
-        </svg>
-        <span class="brand__name">Better Roofing 57<span>Cordova, Tennessee</span></span>
+        <img class="brand__logo" src="assets/images/better-roofing-57-logo.webp" alt="Better Roofing 57" />
       </a>
       <nav class="nav" aria-label="Primary">
         <div class="nav__links">
-          <a href="#trust">Why us</a>
+          <a href="#about">About</a>
           <a href="#services">Services</a>
           <a href="#reviews">Reviews</a>
-          <a href="#area">Service area</a>
+          <a href="#work">Work</a>
           <a href="#contact">Contact</a>
         </div>
         <a class="nav__phone tel" href="tel:+19014845717">(901) 484-5717</a>
@@ -134,69 +129,100 @@
   <main id="top">
 
     <!-- ============================================================
-         Hero, asymmetric, the 57 as signature. Full screen.
+         Hero, split: value + stats + review on the left, form on the right.
+         Full screen.
          ============================================================ -->
     <section class="hero" id="hero">
-      <div class="shell">
-        <div class="hero__main">
-          <div class="hero__grid">
-            <div class="hero__lede">
-              <p class="label">Cordova & the Memphis metro</p>
-              <h1 class="hero__title">Roofing done <em>right</em> across Cordova & Memphis.</h1>
-              <p class="hero__sub">Residential and commercial roofing: repairs, replacements, inspections. Same-day estimates, real follow-through, and a crew that cleans up before you get home.</p>
-            </div>
-            <div>
-              <div class="hero__57" aria-hidden="true">57<small>Est. roofing, Cordova TN</small></div>
-            </div>
-          </div>
+      <div class="shell hero__shell">
+        <div class="hero__left">
+          <p class="label">Cordova & the Memphis metro</p>
+          <h1 class="hero__title">Your roofer in the Cordova &amp; Memphis area.</h1>
+          <p class="hero__sub">Residential and commercial roofing: repairs, replacements, inspections. Same-day estimates, real follow-through, and a crew that cleans up before you get home.</p>
 
-          <div class="hero__ctas">
-            <a class="btn" href="tel:+19014845717">Call (901) 484-5717</a>
-            <a class="btn btn--ghost" href="#contact">Get a free estimate</a>
-          </div>
+          <ul class="herostats" aria-label="At a glance">
+            <li class="herostat">
+              <span class="herostat__num">5.0<i>★</i></span>
+              <span class="herostat__lbl">Google rating</span>
+            </li>
+            <li class="herostat">
+              <span class="herostat__num">~10</span>
+              <span class="herostat__lbl">years in business</span>
+            </li>
+            <li class="herostat">
+              <span class="herostat__num">#8337</span>
+              <span class="herostat__lbl">TN license, active</span>
+            </li>
+            <li class="herostat">
+              <span class="herostat__num">A+</span>
+              <span class="herostat__lbl">BBB rating</span>
+            </li>
+          </ul>
+
+          <figure class="heroquote">
+            <span class="heroquote__stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <blockquote>“I highly recommend Better Roofing 57 for all your roofing needs. Professional, prompt, patient with the insurance company, efficient, knowledgeable and affordable. 10/10.”</blockquote>
+            <figcaption><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#g-logo"/></svg> Lindsay Porter, on Google</figcaption>
+          </figure>
         </div>
 
-        <!-- Trust strip folded into hero bottom -->
-        <div class="truststrip">
-          <span class="truststrip__item"><svg class="truststrip__ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#g-logo"/></svg> <b>5.0</b> <span class="truststrip__star">★★★★★</span> on Google</span>
-          <span class="truststrip__item"><svg class="truststrip__ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#ha-logo"/></svg> <b>5.0</b> on HomeAdvisor</span>
-          <span class="truststrip__item"><svg class="truststrip__ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-shield"/></svg> Licensed <b>#8337</b></span>
-          <span class="truststrip__item"><svg class="truststrip__ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-clock"/></svg> <b>~10 yrs</b> in business</span>
-          <span class="truststrip__item"><svg class="truststrip__ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-badge"/></svg> BBB <b>A+</b></span>
-          <span class="truststrip__item"><svg class="truststrip__ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-doc"/></svg> Free estimates</span>
-        </div>
+        <aside class="hero__right" aria-label="Request a free estimate">
+          <form class="form form--card" id="hero-form" data-estimate novalidate>
+            <input type="hidden" name="access_key" value="REPLACE_WITH_CLIENT_FORM_KEY" />
+            <input type="hidden" name="subject" value="New estimate request from betterroofing57.com (hero)" />
+            <input type="hidden" name="from_name" value="betterroofing57.com" />
+            <input type="checkbox" name="_botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <p class="form__title">Get a free estimate</p>
+            <p class="form__hint">Tell us what is going on. We will call you back.</p>
+
+            <div class="field">
+              <label for="h-name">Name</label>
+              <input id="h-name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="h-phone">Phone</label>
+              <input id="h-phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+            <div class="field">
+              <label for="h-email">Email</label>
+              <input id="h-email" name="email" type="email" autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="h-type">Type of job</label>
+              <select id="h-type" name="job_type" required>
+                <option value="" disabled selected>Choose one…</option>
+                <option value="repair">Repair</option>
+                <option value="replacement">Replacement / installation</option>
+                <option value="inspection">Inspection</option>
+                <option value="commercial">Commercial</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="h-msg">Message</label>
+              <textarea id="h-msg" name="message" placeholder="Leak, storm damage, age of roof, address if handy."></textarea>
+            </div>
+            <button class="btn form__submit" type="submit">Send request</button>
+            <p class="form__note">or call <a class="tel" href="tel:+19014845717">(901) 484-5717</a>. No spam, ever.</p>
+            <p class="form__sent" id="hero-form-sent" hidden>Thanks, request received. We will be in touch shortly.</p>
+          </form>
+        </aside>
       </div>
     </section>
 
     <!-- ============================================================
-         Trust / Why-us. Full screen.
+         About, one quick paragraph. Full screen, deliberate whitespace.
          ============================================================ -->
-    <section id="trust">
+    <section id="about">
       <div class="shell">
-        <div class="trust__grid">
-          <div class="trust__lead measure">
-            <p class="label">Why Better Roofing 57</p>
-            <h2>A roofer who picks up, and shows up.</h2>
-            <p>We have spent a decade roofing homes and businesses across the Memphis metro. We come out the day you call, hand you the estimate before we leave, and follow up after the job to make sure nothing is wrong. No runaround, no surprises on the invoice.</p>
+        <div class="about">
+          <div class="about__text measure">
+            <p class="label">About</p>
+            <h2>A Cordova roofer, built on follow-through.</h2>
+            <p>Better Roofing 57 LLC is a Cordova-based roofing company with about a decade on homes and businesses across the Memphis metro. We come out the day you call, hand you the estimate before we leave, and check back after the job to make sure nothing is wrong. No runaround, no surprises on the invoice, no empty promises.</p>
           </div>
-          <div class="trust__facts">
-            <div class="fact">
-              <div class="fact__num">5.0</div>
-              <div class="fact__label">Google rating, every review five stars</div>
-            </div>
-            <div class="fact">
-              <div class="fact__num">~10</div>
-              <div class="fact__label">years roofing the Memphis metro</div>
-            </div>
-            <div class="fact">
-              <div class="fact__num">#8337</div>
-              <div class="fact__label">Tennessee home-improvement contractor license, active</div>
-            </div>
-            <div class="fact">
-              <div class="fact__num">A+</div>
-              <div class="fact__label">BBB rating</div>
-            </div>
-          </div>
+          <figure class="about__fig">
+            <img class="about__img" src="assets/images/roofing.webp" alt="Asphalt shingle roof in the Memphis metro" loading="lazy" decoding="async" />
+          </figure>
         </div>
       </div>
     </section>
@@ -243,6 +269,46 @@
             <h3>Painting & siding</h3>
             <p>Exterior painting and siding to match the roof, keeping the rest of the building weather-tight.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Service area. Full screen.
+         ============================================================ -->
+    <section id="area">
+      <div class="shell">
+        <div class="area__grid">
+          <div class="area__lead measure">
+            <p class="label">Service area</p>
+            <h2>Cordova and the whole Memphis metro.</h2>
+            <p>We are based on N Germantown Pkwy in Cordova and cover the surrounding metro across Tennessee, Mississippi, and Arkansas. Not sure if you are in range? Call us. We will tell you straight.</p>
+          </div>
+          <div>
+            <ul class="area__list">
+              <li>Cordova, TN</li>
+              <li>Memphis, TN</li>
+              <li>Bartlett, TN</li>
+              <li>Collierville, TN</li>
+              <li>Arlington, TN</li>
+              <li>Covington, TN</li>
+              <li>Atoka, TN</li>
+              <li>Eads, TN</li>
+              <li>Braden, TN</li>
+              <li>Brighton, TN</li>
+              <li>Burlison, TN</li>
+              <li>Brunswick, TN</li>
+              <li>Byhalia, MS</li>
+              <li>Clarkedale, AR</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="map-wrap map-wrap--wide">
+          <iframe class="map"
+            src="https://www.google.com/maps?q=1138%20N%20Germantown%20Pkwy%2C%20Suite%20101%2C%20Cordova%2C%20TN%2038016&output=embed"
+            title="Better Roofing 57 service area and location on Google Maps"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
       </div>
     </section>
@@ -362,55 +428,30 @@
     </section>
 
     <!-- ============================================================
-         Gallery, placeholder frames for real job photos. Full screen.
+         Recent work, big-picture carousel. Full screen.
          ============================================================ -->
     <section id="work">
       <div class="shell">
         <div class="gallery__head measure">
           <p class="label">Recent work</p>
           <h2>Before & after, real jobs.</h2>
-          <p class="label label--muted">[PHOTOS NEEDED: drop real before/after job photos into these frames, one img each. No stock images.]</p>
         </div>
-        <div class="gallery__grid">
-          <div class="frame"><small>Before / after 1</small><!-- <img src="photos/job-1.jpg" alt="Residential shingle replacement in Cordova, TN"> --></div>
-          <div class="frame"><small>Before / after 2</small><!-- <img src="photos/job-2.jpg" alt="Storm damage repair in Bartlett, TN"> --></div>
-          <div class="frame"><small>Before / after 3</small><!-- <img src="photos/job-3.jpg" alt="Commercial roof repair, Memphis metro"> --></div>
-          <div class="frame"><small>Before / after 4</small><!-- <img src="photos/job-4.jpg" alt="Roof replacement in Collierville, TN"> --></div>
-          <div class="frame"><small>Before / after 5</small><!-- <img src="photos/job-5.jpg" alt="Shingle repair in Arlington, TN"> --></div>
-          <div class="frame"><small>Before / after 6</small><!-- <img src="photos/job-6.jpg" alt="Gutter and flashing work, Cordova TN"> --></div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ============================================================
-         Service area. Full screen.
-         ============================================================ -->
-    <section id="area">
-      <div class="shell">
-        <div class="area__grid">
-          <div class="area__lead measure">
-            <p class="label">Service area</p>
-            <h2>Cordova and the whole Memphis metro.</h2>
-            <p>We are based on N Germantown Pkwy in Cordova and cover the surrounding metro across Tennessee, Mississippi, and Arkansas. Not sure if you are in range? Call us. We will tell you straight.</p>
+        <div class="carousel" data-carousel>
+          <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous photo" data-prev>
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <div class="carousel__viewport" data-track>
+            <figure class="slide"><div class="slide__frame"><small>Job 1</small><!-- <img src="photos/job-1.jpg" alt="Residential shingle replacement in Cordova, TN"> --></div><figcaption>Residential shingle replacement, Cordova TN</figcaption></figure>
+            <figure class="slide"><div class="slide__frame"><small>Job 2</small><!-- <img src="photos/job-2.jpg" alt="Storm damage repair in Bartlett, TN"> --></div><figcaption>Storm damage repair, Bartlett TN</figcaption></figure>
+            <figure class="slide"><div class="slide__frame"><small>Job 3</small><!-- <img src="photos/job-3.jpg" alt="Commercial roof repair, Memphis metro"> --></div><figcaption>Commercial roof repair, Memphis metro</figcaption></figure>
+            <figure class="slide"><div class="slide__frame"><small>Job 4</small><!-- <img src="photos/job-4.jpg" alt="Roof replacement in Collierville, TN"> --></div><figcaption>Roof replacement, Collierville TN</figcaption></figure>
+            <figure class="slide"><div class="slide__frame"><small>Job 5</small><!-- <img src="photos/job-5.jpg" alt="Shingle repair in Arlington, TN"> --></div><figcaption>Shingle repair, Arlington TN</figcaption></figure>
+            <figure class="slide"><div class="slide__frame"><small>Job 6</small><!-- <img src="photos/job-6.jpg" alt="Gutter and flashing work, Cordova TN"> --></div><figcaption>Gutter & flashing work, Cordova TN</figcaption></figure>
           </div>
-          <div>
-            <ul class="area__list">
-              <li>Cordova, TN</li>
-              <li>Memphis, TN</li>
-              <li>Bartlett, TN</li>
-              <li>Collierville, TN</li>
-              <li>Arlington, TN</li>
-              <li>Covington, TN</li>
-              <li>Atoka, TN</li>
-              <li>Eads, TN</li>
-              <li>Braden, TN</li>
-              <li>Brighton, TN</li>
-              <li>Burlison, TN</li>
-              <li>Brunswick, TN</li>
-              <li>Byhalia, MS</li>
-              <li>Clarkedale, AR</li>
-            </ul>
-          </div>
+          <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next photo" data-next>
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -455,33 +496,25 @@
     </section>
 
     <!-- ============================================================
-         Contact. Full screen.
+         Get in touch: statement, form, contact details, map. Full screen.
          ============================================================ -->
     <section id="contact">
       <div class="shell">
-        <div class="contact__grid">
-          <div class="contact__info measure">
-            <p class="label">Contact</p>
-            <h2>Call now, or send the job details.</h2>
-            <p>Fastest is a phone call; most estimates can be booked the same day. Prefer to write it down? Use the form and we will call you back.</p>
-            <dl>
-              <dt>Phone</dt>
-              <dd><a class="tel" href="tel:+19014845717">(901) 484-5717</a></dd>
-              <dt>Address</dt>
-              <dd>1138 N Germantown Pkwy, Suite 101<br>Cordova, TN 38016</dd>
-              <dt>Hours</dt>
-              <dd>Mon to Fri, 9:00 am to 5:00 pm</dd>
-              <dt>License</dt>
-              <dd>#8337, TN home-improvement contractor</dd>
-            </dl>
-          </div>
+        <div class="contact__statement measure">
+          <p class="label">Get in touch</p>
+          <h2>Proudly serving homeowners throughout West Tennessee.</h2>
+        </div>
 
-          <form class="form" id="estimate-form" novalidate>
+        <div class="contact__grid">
+          <form class="form" id="contact-form" data-estimate novalidate>
             <!-- [CONFIRM ON CALL: replace access key with the client's Web3Forms or Formspree account] -->
             <input type="hidden" name="access_key" value="REPLACE_WITH_CLIENT_FORM_KEY" />
-            <input type="hidden" name="subject" value="New estimate request from betterroofing57.com" />
+            <input type="hidden" name="subject" value="New estimate request from betterroofing57.com (contact)" />
             <input type="hidden" name="from_name" value="betterroofing57.com" />
             <input type="checkbox" name="_botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <p class="form__title">Send the job details</p>
+            <p class="form__hint">Fastest is a phone call; most estimates can be booked the same day. Prefer to write it down? Use the form and we will call you back.</p>
 
             <div class="field">
               <label for="f-name">Name</label>
@@ -511,8 +544,21 @@
             </div>
             <button class="btn form__submit" type="submit">Send request</button>
             <p class="form__note">We will call you back the next business morning. No spam, ever.</p>
-            <p class="form__sent" id="form-sent" hidden>Thanks, request received. We will be in touch shortly.</p>
+            <p class="form__sent" id="contact-form-sent" hidden>Thanks, request received. We will be in touch shortly.</p>
           </form>
+
+          <div class="contact__side">
+            <dl class="contact__dl">
+              <dt>Phone</dt>
+              <dd><a class="tel" href="tel:+19014845717">(901) 484-5717</a></dd>
+              <dt>Address</dt>
+              <dd>1138 N Germantown Pkwy, Suite 101<br>Cordova, TN 38016</dd>
+              <dt>Hours</dt>
+              <dd>Mon to Fri, 9:00 am to 5:00 pm</dd>
+              <dt>License</dt>
+              <dd>#8337, TN home-improvement contractor</dd>
+            </dl>
+          </div>
         </div>
       </div>
     </section>
@@ -524,9 +570,7 @@
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__brand">
-        <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false" style="color:#eceae4"><use href="#roofline" /></svg>
-        <div class="fn">Better Roofing 57 LLC</div>
-        <div class="alt">Also: Better Roofing and Restoration</div>
+        <img class="footer__logo" src="assets/images/better-roofing-57-logo.webp" alt="Better Roofing 57" />
       </div>
       <div>
         <h3>Contact</h3>
