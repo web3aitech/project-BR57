@@ -196,6 +196,7 @@ a.tel:hover { color: var(--accent); }
   height: 100dvh;
   min-height: 0;
   margin-top: calc(-1 * var(--header-h));
+  margin-bottom: -2px;  /* overlap the next section by 2px: no white seam */
   background: #0d0d0d;
   color: #fff;
   overflow: hidden;
@@ -228,10 +229,10 @@ a.tel:hover { color: var(--accent); }
   justify-content: center;
   overflow: hidden;
 }
-.hero__left { display: flex; flex-direction: column; gap: var(--s-2); max-width: 32em; min-width: 0; }
-.hero__left .label { color: var(--accent); font-size: 0.72rem; }
-.hero__title { font-size: clamp(1.9rem, 4.4vw, 3rem); margin: 0; color: #fff; }
-.hero__sub { font-size: 0.85rem; color: rgba(255,255,255,0.86); margin: 0; max-width: 30em; line-height: 1.5; }
+.hero__left { display: flex; flex-direction: column; gap: var(--s-2); max-width: 34em; min-width: 0; }
+.hero__left .label { color: var(--accent); font-size: 0.78rem; }
+.hero__title { font-size: clamp(2.8rem, 6.8vw, 4.3rem); margin: 0; color: #fff; }
+.hero__sub { font-size: 1.3rem; color: rgba(255,255,255,0.92); margin: 0; max-width: 32em; line-height: 1.5; }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; margin-top: 0.3rem; }
 .hero__ctas .btn { font-size: 0.78rem; padding: 0.7em 1.15em; }
 .hero__ctas .tel { color: #fff; }
@@ -260,24 +261,23 @@ a.tel:hover { color: var(--accent); }
   align-self: stretch; display: flex; align-items: center;
 }
 
-/* Two-column hero (desktop only): pitch on the left, the quote form on
-   the right on a solid white card over the photo. On mobile the form is
-   hidden and the hero is a single full-viewport pitch; the form lives in
-   the contact section instead. */
+/* Hero layout. Mobile-first: pitch and form stack (form shown on mobile
+   too). Desktop widens to a two-column grid with the form on the right. */
 .hero .hero__grid {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   gap: var(--s-3);
 }
-.hero .hero__form-wrap { display: none; }
+.hero .hero__form-wrap { display: block; width: 100%; }
 @media (min-width: 50rem) {
   .hero .hero__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(1.5rem, 3.5vw, 3rem);
     align-items: center;
+    justify-content: initial;
   }
   .hero .hero__form-wrap {
     display: block;
@@ -305,21 +305,21 @@ a.tel:hover { color: var(--accent); }
 .form--hero .field input,
 .form--hero .field select,
 .form--hero .field textarea { padding: 0.4em 0.65em; font-size: 0.82rem; }
-.form--hero .field textarea { min-height: 2.6em; }  /* 2-3 rows shorter */
+.form--hero .field textarea { min-height: 3.4em; resize: none; }  /* a bit bigger, not expandable */
 .form--hero .form__submit { justify-self: stretch; margin-top: 0.1rem; text-align: center; justify-content: center; padding-block: 0.65em; }  /* slightly less button padding */
-.form--hero .form__note { text-align: center; font-size: 0.72rem; margin: 0; }
+.form--hero .form__note { justify-self: center; text-align: center; font-size: 0.72rem; margin: 0; max-width: none; }
 .form--hero .form__note .tel { color: var(--accent); }
 
 /* Compaction ladder by viewport height. Everything stays visible;
    elements only scale down on shorter screens. */
 @media (max-height: 44rem) and (min-width: 50rem) {
-  .hero__title { font-size: clamp(2rem, 4.5vw, 3.1rem); }
-  .hero__sub { font-size: 0.85rem; }
+  .hero__title { font-size: clamp(2.5rem, 5.4vw, 3.6rem); }
+  .hero__sub { font-size: 1.15rem; }
 }
 @media (max-height: 38rem) and (min-width: 50rem) {
   .hero .shell { padding-top: calc(var(--header-h) + var(--s-1)); padding-bottom: var(--s-1); gap: 0.4rem; }
-  .hero__title { font-size: clamp(1.7rem, 3.8vw, 2.6rem); }
-  .hero__sub { font-size: 0.8rem; line-height: 1.4; }
+  .hero__title { font-size: clamp(2.2rem, 4.6vw, 3.1rem); }
+  .hero__sub { font-size: 1.05rem; line-height: 1.4; }
 }
 
 /* On short / landscape viewports, let the hero shrink so it doesn't dominate */
@@ -329,26 +329,28 @@ a.tel:hover { color: var(--accent); }
   .hero .shell { padding-top: var(--header-h); }
 }
 
-/* Stacked (mobile) hero: drop the pull-up, let the hero start below the
-   header, use min-height so it can grow, allow scroll instead of clip. */
+/* Stacked (mobile) hero: pitch on top, the form below it. The hero grows
+   with its content (at least one full viewport) and the page scrolls
+   through it so the form is reachable without clipping. The dark photo
+   stays as the backdrop; the form sits on a white card over it. */
 @media (max-width: 49.99rem) {
-  /* Mobile hero: pitch only (form is hidden, it lives at the contact
-     section). One full-viewport screen. */
-  .hero { height: 100vh; height: 100dvh; min-height: 0; margin-top: 0; overflow: hidden; }
+  .hero { height: auto; min-height: 100vh; min-height: 100dvh; margin-top: 0; overflow: visible; }
   .hero .shell {
-    height: 100vh;
-    height: 100dvh;
-    min-height: 0;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
     padding-top: calc(var(--header-h) + var(--section-pad));
     padding-bottom: var(--section-pad);
-    overflow: hidden;
-    justify-content: center;
+    overflow: visible;
+    justify-content: flex-start;
   }
   .hero__left { gap: var(--s-2); max-width: none; }
-  .hero__title { font-size: clamp(2rem, 7.6vw, 3rem); }
-  .hero__sub { font-size: 0.88rem; }
+  .hero__title { font-size: clamp(2.6rem, 9vw, 3.8rem); }
+  .hero__sub { font-size: 1.2rem; }
+  .hero .hero__form-wrap { max-width: none; }
+  .form--hero { box-shadow: 0 12px 30px rgba(0,0,0,0.25); }
   .hero__overlay {
-    background: linear-gradient(0deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.55) 100%);
+    background: linear-gradient(0deg, rgba(10,10,10,0.84) 0%, rgba(10,10,10,0.55) 40%, rgba(10,10,10,0.60) 100%);
   }
 }
 
@@ -612,7 +614,7 @@ a.tel:hover { color: var(--accent); }
 }
 .field textarea { min-height: 4.5em; resize: vertical; }
 .form__submit { justify-self: start; margin-top: 0.25rem; }
-.form__note { font-size: var(--fs-300); color: var(--muted); margin: 0; }
+.form__note { font-size: var(--fs-300); color: var(--muted); margin: 0; text-align: center; }
 .form__note a { color: var(--accent); font-weight: 600; }
 .form__sent { color: var(--accent); font-weight: 600; font-size: var(--fs-300); margin: 0; }
 
