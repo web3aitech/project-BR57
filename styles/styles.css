@@ -1,7 +1,7 @@
 /* ============================================================
-   Better Roofing 57. Styles.
-   Disciplined, specific, restrained. Dark-blue accent on white,
-   one navy section (reviews) + navy footer for rhythm.
+   Tennessee Septic and Pumping LLC. Styles.
+   Disciplined, specific, restrained. Orange accent on white;
+   one black section (reviews) + black footer for rhythm.
    No em-dashes anywhere. Each section is one full screen.
    ============================================================ */
 
@@ -36,7 +36,9 @@ a { color: inherit; text-decoration: none; }
   outline-offset: 3px;
 }
 
-/* ---- Typography ---- */
+/* ---- Typography ----
+   Archivo display carries the industrial / architectural character
+   for an excavation trade. Tight tracking, considered leading. */
 .display, h1, h2, h3 {
   font-family: var(--font-display);
   font-weight: 700;
@@ -55,7 +57,7 @@ p { margin: 0 0 var(--s-2); max-width: 42em; }
 .label {
   font-family: var(--font-label);
   font-size: var(--fs-300);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: var(--track-label);
   color: var(--accent);
@@ -89,7 +91,7 @@ section > .shell {
   min-height: var(--section-h);
 }
 
-.section--ink { background: var(--ink-deep); color: #c9d4e4; }
+.section--ink { background: var(--ink-deep); color: #c9c9c9; }
 .section--ink h1, .section--ink h2, .section--ink h3 { color: #fff; }
 .section--ink .label { color: var(--accent-on-dark); }
 .section--ink .label--muted { color: var(--accent-on-dark); opacity: 0.75; }
@@ -124,19 +126,33 @@ section > .shell {
   border-color: var(--muted);
 }
 .btn--ghost:hover { background: transparent; border-color: var(--ink-strong); color: var(--ink-strong); }
+/* Ghost on dark hero / dark sections: light outline, light text */
+.btn--ghost-light {
+  --btn-bg: transparent; --btn-fg: #fff;
+  border-color: rgba(255,255,255,0.55);
+}
+.btn--ghost-light:hover { background: rgba(255,255,255,0.1); border-color: #fff; color: #fff; }
 
 .tel { font-weight: 600; white-space: nowrap; color: var(--ink-strong); }
 a.tel:hover { color: var(--accent); }
 
 /* ============================================================
-   Header, sticky, click-to-call always visible
+   Header, sticky + transparent over the dark hero. Turns into a
+   solid white bar once you scroll past the hero top, so the logo
+   (true colors) and dark text stay readable over the white body.
+   Click-to-call always visible.
    ============================================================ */
 .site-head {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--ink-deep);        /* navy header */
-  border-bottom: 1px solid var(--rule-dark);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.site-head.is-scrolled {
+  background: var(--surface);
+  border-bottom-color: var(--rule);
 }
 .site-head__inner {
   max-width: var(--measure-wide);
@@ -149,219 +165,250 @@ a.tel:hover { color: var(--accent); }
   gap: var(--s-3);
 }
 .brand { display: inline-flex; align-items: center; }
-.brand__logo { height: clamp(2.2rem, 5.5vw, 3rem); width: auto; display: block; filter: brightness(0) invert(1); }  /* TEST: white logo on navy */
+/* Logo has a transparent background; show it true-color with no chip. */
+.brand__logo {
+  height: clamp(2.2rem, 6vw, 3rem);
+  width: auto;
+  display: block;
+}
 
 .nav { display: flex; align-items: center; gap: var(--s-3); }
 .nav__links { display: none; gap: var(--s-4); align-items: center; }
-.nav__links a { font-size: var(--fs-300); font-weight: 500; color: #c9d4e4; }  /* TEST: light links on navy */
-.nav__links a:hover { color: #fff; }
-.nav__phone { font-size: var(--fs-300); font-weight: 600; color: #fff; }  /* TEST: light phone on navy */
-.nav__cta { padding: 0.7em 1.1em; background: #fff; color: var(--ink-deep); border-color: #fff; }  /* TEST: white CTA on navy */
-.nav__cta:hover { background: var(--accent-on-dark); border-color: var(--accent-on-dark); color: var(--ink-deep); }
+.nav__links a { font-size: var(--fs-300); font-weight: 600; color: #fff; transition: color var(--dur) var(--ease); }
+.nav__links a:hover { color: var(--accent); }
+.site-head.is-scrolled .nav__links a { color: var(--ink-strong); }
+.nav__phone { font-size: var(--fs-300); font-weight: 600; color: #fff; }
+.site-head.is-scrolled .nav__phone { color: var(--ink-strong); }
+.nav__cta { background: var(--accent); color: #fff; border-color: var(--accent); }
+.nav__cta:hover { background: var(--accent-press); border-color: var(--accent-press); color: #fff; }
 @media (min-width: 56rem) { .nav__links { display: flex; } }
 @media (max-width: 30rem) { .nav__phone { display: none; } }   /* keep CTA on tiny screens */
 
 /* ============================================================
-   Hero, split: lede + stats + review on the left, form on the right.
-   Full 100svh: pulled up under the sticky header (both are white,
-   so the seam is invisible), content padded to clear the header.
+   Hero, full-bleed real job photo with a dark overlay. White type,
+   orange accents. Pulled up under the sticky header (header sits on
+   top, the seam reads as one screen). No form here; the contact
+   section carries the form (matches the reference structure).
    ============================================================ */
 .hero {
-  height: 100svh;
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
   min-height: 0;
   margin-top: calc(-1 * var(--header-h));
+  background: #0d0d0d;
+  color: #fff;
+  overflow: hidden;
 }
-.hero .hero__shell {
-  height: 100svh;
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(10,10,10,0.66) 0%, rgba(10,10,10,0) 22%),
+    linear-gradient(90deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.55) 42%, rgba(10,10,10,0.20) 78%, rgba(10,10,10,0.35) 100%),
+    linear-gradient(0deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0) 45%);
+}
+.hero .shell {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  height: 100dvh;
   min-height: 0;
   padding-top: calc(var(--header-h) + var(--section-pad));
   padding-bottom: var(--section-pad);
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--s-3);
-  align-content: center;
-  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
-.hero__left { display: flex; flex-direction: column; gap: var(--s-1); min-width: 0; }
-.hero__title { font-size: clamp(2.5rem, 6.1vw, 4.2rem); margin: 0; }
-.hero__sub { font-size: 0.88rem; color: var(--muted); margin: 0; max-width: 34em; line-height: 1.45; }
-
-/* Stat row, compact, verified facts only */
-.herostats {
-  list-style: none;
-  margin: 0;
-  padding: var(--s-1) 0 0;
-  border-top: 1px solid var(--rule);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--s-1) var(--s-2);
-}
-.herostat { display: flex; flex-direction: column; gap: 0.1rem; }
-.herostat__num {
+.hero__left { display: flex; flex-direction: column; gap: var(--s-2); max-width: 32em; min-width: 0; }
+.hero__left .label { color: var(--accent); font-size: 0.72rem; }
+.hero__title { font-size: clamp(1.9rem, 4.4vw, 3rem); margin: 0; color: #fff; }
+.hero__sub { font-size: 0.85rem; color: rgba(255,255,255,0.86); margin: 0; max-width: 30em; line-height: 1.5; }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; margin-top: 0.3rem; }
+.hero__ctas .btn { font-size: 0.78rem; padding: 0.7em 1.15em; }
+.hero__ctas .tel { color: #fff; }
+/* Google reviews badge: a white pill carrying the Google G, gold stars,
+   5.0 / 5, and a "Google Reviews" label. Stands off the dark hero. */
+.gbadge {
   display: inline-flex;
   align-items: center;
-  gap: 0.25em;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.15rem, 2.4vw, 1.6rem);
-  line-height: 1;
-  letter-spacing: var(--track-tight);
-  color: var(--accent);
-}
-.herostat__ic { width: 1.1em; height: 1.1em; flex: 0 0 auto; }
-.herostat__num i { font-style: normal; color: var(--gold); font-size: 0.85em; }
-.herostat__lbl {
-  font-size: 0.72rem;
-  color: var(--muted);
-  line-height: 1.15;
-}
-
-/* Highlighted Google review, compact */
-.heroquote {
-  margin: var(--s-1) 0 0;
-  padding: var(--s-1) 0 0;
-  border-top: 1px solid var(--rule);
-  max-width: 34em;
-}
-.heroquote__stars { color: var(--gold); letter-spacing: 0.05em; font-size: 0.78rem; line-height: 1; }
-.heroquote blockquote {
-  margin: 0.3rem 0 0;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.86rem;
-  line-height: 1.4;
+  gap: 0.5rem;
+  background: #fff;
   color: var(--ink-strong);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem 0.35rem 0.45rem;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.22);
+  font-family: var(--font-body);
+  margin-top: 0.25rem;
 }
-.heroquote figcaption {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin-top: 0.35rem;
-  font-size: 0.72rem;
-  color: var(--muted);
+.gbadge__g { width: 1.5rem; height: 1.5rem; flex: 0 0 auto; }
+.gbadge__stars { color: var(--gold); letter-spacing: 0.04em; font-size: 0.78rem; line-height: 1; }
+.gbadge__rating { font-family: var(--font-display); font-weight: 800; font-size: 1rem; line-height: 1; color: var(--ink-strong); }
+.gbadge__of { color: var(--muted); font-weight: 600; font-size: 0.75rem; }
+.gbadge__label {
+  font-size: 0.68rem; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  border-left: 1px solid var(--rule); padding-left: 0.6rem;
+  align-self: stretch; display: flex; align-items: center;
 }
-.heroquote figcaption svg { width: 0.85rem; height: 0.85rem; }
 
-/* Hero form card on the right */
-.hero__right { min-width: 0; }
-.form--card {
-  background: var(--surface-2);
-  border: 1px solid var(--rule);
-  border-radius: var(--r-card);
-  padding: 1.75rem;
+/* Two-column hero (desktop only): pitch on the left, the quote form on
+   the right on a solid white card over the photo. On mobile the form is
+   hidden and the hero is a single full-viewport pitch; the form lives in
+   the contact section instead. */
+.hero .hero__grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: var(--s-3);
 }
-/* Hero form fields: roomier than the contact form so the card reads as a real box */
-.form--card .form { gap: 0.65rem; }
-.form--card .field { gap: 0.22rem; }
-.form--card .field input,
-.form--card .field select,
-.form--card .field textarea { padding: 0.5em 0.72em; font-size: 0.88rem; }
-.form--card .field textarea { min-height: 3.2em; }
-.form--card .form__title { font-size: 1.08rem; margin: 0; }
-.form--card .form__hint { font-size: 0.82rem; margin: 0 0 0.15rem; }
-.form--card .form__submit { margin-top: 0.15rem; padding: 0.78em 1.3em; }
-.form--card .form__note { font-size: 0.74rem; }
-
+.hero .hero__form-wrap { display: none; }
 @media (min-width: 50rem) {
-  .hero .hero__shell { grid-template-columns: 1fr 1.1fr; gap: var(--s-5); }
-  /* Give the form card a bigger box: generous padding + roomier fields at desktop */
-  .form--card { padding: 2.75rem; }
-  .form--card .form { gap: 0.9rem; }
-  .form--card .field { gap: 0.35rem; }
-  .form--card .field input,
-  .form--card .field select,
-  .form--card .field textarea { padding: 0.72em 0.95em; font-size: 0.95rem; }
-  .form--card .field textarea { min-height: 4em; }
-  .form--card .form__title { font-size: 1.25rem; }
-  .form--card .form__hint { font-size: 0.88rem; }
-  .form--card .form__submit { padding: 0.9em 1.55em; }
+  .hero .hero__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 3.5vw, 3rem);
+    align-items: center;
+  }
+  .hero .hero__form-wrap {
+    display: block;
+    width: 100%;
+    max-width: 44rem;  /* wider card: ~20% up, left edge pulls from viewport right */
+    justify-self: end;
+  }
 }
+.form--hero {
+  background: #fff;
+  color: var(--ink);
+  border-radius: 14px;
+  /* ~20% less vertical padding inside the card */
+  padding: clamp(0.8rem, 1.6vw, 1.12rem) clamp(1.3rem, 2.6vw, 1.8rem);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.30);
+  display: grid;
+  gap: 0.32rem;  /* ~35% tighter between field groups */
+  width: 100%;
+}
+.form--hero .form__title { font-size: 1.15rem; margin: 0; }  /* unchanged: the card's anchor */
+.form--hero .form__hint { margin: 0 0 0.15rem; font-size: 0.78rem; }
+.form--hero .field { gap: 0.15rem; }
+/* labels ~1px smaller, ~1px smaller input text; trimmed vertical input padding */
+.form--hero .field label { font-size: 0.62rem; }
+.form--hero .field input,
+.form--hero .field select,
+.form--hero .field textarea { padding: 0.4em 0.65em; font-size: 0.82rem; }
+.form--hero .field textarea { min-height: 2.6em; }  /* 2-3 rows shorter */
+.form--hero .form__submit { justify-self: stretch; margin-top: 0.1rem; text-align: center; justify-content: center; padding-block: 0.65em; }  /* slightly less button padding */
+.form--hero .form__note { text-align: center; font-size: 0.72rem; margin: 0; }
+.form--hero .form__note .tel { color: var(--accent); }
 
 /* Compaction ladder by viewport height. Everything stays visible;
    elements only scale down on shorter screens. */
 @media (max-height: 44rem) and (min-width: 50rem) {
-  .hero .hero__shell { gap: var(--s-1); }
-  .hero__title { font-size: clamp(2.1rem, 4.5vw, 3.05rem); }
-  .hero__sub { font-size: 0.82rem; }
-  .herostat__num { font-size: clamp(1.05rem, 2vw, 1.35rem); }
-  .heroquote blockquote { font-size: 0.8rem; }
-  .form--card { padding: 2rem; }
-  .form--card .form { gap: 0.55rem; }
-  .form--card .field input,
-  .form--card .field select,
-  .form--card .field textarea { padding: 0.5em 0.75em; }
-  .form--card .field textarea { min-height: 3em; }
-  .form--card .form__hint { font-size: 0.78rem; }
+  .hero__title { font-size: clamp(2rem, 4.5vw, 3.1rem); }
+  .hero__sub { font-size: 0.85rem; }
 }
 @media (max-height: 38rem) and (min-width: 50rem) {
-  .hero .hero__shell { padding-top: calc(var(--header-h) + var(--s-1)); padding-bottom: var(--s-1); gap: 0.4rem; }
-  .form--card { padding: 1.5rem; }
-  .hero__title { font-size: clamp(1.8rem, 3.8vw, 2.6rem); }
-  .hero__sub { font-size: 0.78rem; line-height: 1.4; }
-  .herostats { padding-top: 0.4rem; margin-top: 0.4rem; }
-  .herostat__num { font-size: clamp(0.95rem, 1.8vw, 1.2rem); }
-  .heroquote { padding-top: 0.4rem; margin-top: 0.4rem; }
-  .heroquote__stars { font-size: 0.72rem; }
-  .heroquote blockquote { font-size: 0.76rem; line-height: 1.35; }
-  .heroquote figcaption { font-size: 0.68rem; margin-top: 0.25rem; }
-  .form--card .form { gap: 0.45rem; }
-  .form--card .field input,
-  .form--card .field select,
-  .form--card .field textarea { padding: 0.45em 0.65em; font-size: 0.82rem; }
-  .form--card .field textarea { min-height: 2.5em; }
-  .form--card .form__title { font-size: 1rem; }
-  .form--card .form__hint { font-size: 0.74rem; }
-  .form--card .form__submit { padding: 0.75em 1.2em; }
+  .hero .shell { padding-top: calc(var(--header-h) + var(--s-1)); padding-bottom: var(--s-1); gap: 0.4rem; }
+  .hero__title { font-size: clamp(1.7rem, 3.8vw, 2.6rem); }
+  .hero__sub { font-size: 0.8rem; line-height: 1.4; }
 }
 
 /* On short / landscape viewports, let the hero shrink so it doesn't dominate */
 @media (max-height: 30rem) and (orientation: landscape) {
-  .hero, .hero .hero__shell { min-height: auto; height: auto; overflow: visible; }
+  .hero, .hero .shell { min-height: auto; height: auto; overflow: visible; }
   .hero { margin-top: 0; }
-  .hero .hero__shell { padding-top: var(--header-h); }
+  .hero .shell { padding-top: var(--header-h); }
 }
 
-/* Stacked (mobile) hero: the under-header pull-up + fixed 100svh + overflow
-   clip cuts the top off once content stacks taller than the viewport. So on
-   mobile we drop the pull-up, let the hero start below the header normally,
-   use min-height (not fixed height) so it can grow, and allow scroll instead
-   of clipping. Desktop keeps the seamless under-header full-screen treatment. */
+/* Stacked (mobile) hero: drop the pull-up, let the hero start below the
+   header, use min-height so it can grow, allow scroll instead of clip. */
 @media (max-width: 49.99rem) {
-  .hero { height: auto; min-height: 100svh; margin-top: 0; overflow: visible; }
-  .hero .hero__shell {
-    height: auto;
-    min-height: 100svh;
-    padding-top: var(--section-pad);
+  /* Mobile hero: pitch only (form is hidden, it lives at the contact
+     section). One full-viewport screen. */
+  .hero { height: 100vh; height: 100dvh; min-height: 0; margin-top: 0; overflow: hidden; }
+  .hero .shell {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    padding-top: calc(var(--header-h) + var(--section-pad));
     padding-bottom: var(--section-pad);
-    overflow: visible;
+    overflow: hidden;
+    justify-content: center;
   }
-  .hero .hero__shell { gap: var(--s-1); }
-  .hero__title { font-size: clamp(2.1rem, 7.6vw, 3rem); }
-  .hero__sub { font-size: 0.85rem; }
-  .herostats { gap: var(--s-1) var(--s-2); }
-  .form--card { padding: 2rem; }
-  .form--card .form { gap: 0.6rem; }
-  .form--card .field input,
-  .form--card .field select,
-  .form--card .field textarea { padding: 0.55em 0.78em; }
-  .form--card .field textarea { min-height: 3.2em; }
+  .hero__left { gap: var(--s-2); max-width: none; }
+  .hero__title { font-size: clamp(2rem, 7.6vw, 3rem); }
+  .hero__sub { font-size: 0.88rem; }
+  .hero__overlay {
+    background: linear-gradient(0deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.55) 100%);
+  }
 }
-@media (max-width: 49.99rem) and (max-height: 44rem) {
-  .hero .hero__shell { gap: 0.4rem; }
-  .hero__title { font-size: clamp(1.95rem, 7.5vw, 2.65rem); }
-  .hero__sub { font-size: 0.8rem; line-height: 1.4; }
-  .herostat__num { font-size: clamp(1rem, 4vw, 1.3rem); }
-  .heroquote blockquote { font-size: 0.78rem; line-height: 1.35; }
-  .form--card { padding: 1.5rem; }
-  .form--card .form { gap: 0.45rem; }
-  .form--card .field input,
-  .form--card .field select,
-  .form--card .field textarea { padding: 0.45em 0.68em; font-size: 0.84rem; }
-  .form--card .field textarea { min-height: 2.6em; }
-  .form--card .form__title { font-size: 1rem; }
-  .form--card .form__hint { font-size: 0.74rem; }
-  .form--card .form__submit { padding: 0.7em 1.15em; }
+
+/* ============================================================
+   Services, image cards. Real job photos, not stock. Six entries.
+   ============================================================ */
+.services__head { max-width: 40em; margin-bottom: var(--s-3); }
+.services__head h2 { margin: 0 0 var(--s-2); }
+.services__head p { margin: 0; color: var(--muted); }
+/* 6 cards, 2 rows x 3 columns on desktop. Portrait job photos shown
+   in a 4/5 frame (object-fit cover) so the whole photo reads, not a
+   thin landscape slice. Heading sits in a dark pill at the bottom
+   center of the image; a short description follows beneath. */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--s-2);
+}
+@media (min-width: 40rem) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64rem) { .svc-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.svc-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+.svc-card__media { position: relative; }
+.svc-card__img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center;
+  background: var(--surface-2);
+  display: block;
+}
+.svc-card__pill {
+  position: absolute;
+  left: 50%;
+  bottom: 0.85rem;
+  transform: translateX(-50%);
+  max-width: calc(100% - 1.4rem);
+  background: rgba(17,17,17,0.92);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.76rem, 1.6vw, 0.92rem);
+  line-height: 1.2;
+  letter-spacing: var(--track-tight);
+  text-align: center;
+  padding: 0.5em 1.05em;
+  border-radius: 999px;
+}
+.svc-card__desc {
+  padding: var(--s-2) var(--s-1) 0;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.45;
 }
 
 /* ============================================================
@@ -371,11 +418,14 @@ a.tel:hover { color: var(--accent); }
 .about__text { max-width: 40em; }
 .about__text h2 { margin: 0 0 var(--s-2); }
 .about__text p { font-size: var(--fs-500); margin: 0; }
+.about__text .tagline { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: var(--accent); margin: 0 0 var(--s-2); max-width: none; }
 .about__fig { margin: 0; }
 .about__img {
   width: 100%;
-  height: clamp(13rem, 34vh, 22rem);
+  height: auto;
+  aspect-ratio: 526 / 412;
   object-fit: cover;
+  object-position: center;
   border: 1px solid var(--rule);
   border-radius: var(--r-card);
   background: var(--surface-2);
@@ -384,26 +434,31 @@ a.tel:hover { color: var(--accent); }
 @media (min-width: 48rem) { .about { grid-template-columns: 1.1fr 1fr; gap: var(--s-5); } }
 
 /* ============================================================
-   Services, one real entry each, no stock icons / emoji
+   Service area
    ============================================================ */
-.services__head { max-width: 40em; margin-bottom: var(--s-4); }
-.services__head h2 { margin: 0 0 var(--s-2); }
-.services__head p { margin: 0; color: var(--muted); }
-.svc-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--rule);
+.area__grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); align-items: start; }
+.area__lead h2 { margin: 0 0 var(--s-2); }
+.area__lead p { font-size: var(--fs-500); margin: 0; }
+.area__list { columns: 2; column-gap: var(--s-5); font-size: var(--fs-300); margin: 0; list-style: none; padding: 0; }
+.area__list li { break-inside: avoid; padding-block: 0.3em; border-bottom: 1px solid var(--rule); }
+@media (min-width: 48rem) { .area__grid { grid-template-columns: 1fr 1fr; gap: var(--s-6); } }
+
+/* Shared map frame. --wide variant = short banner for the service area. */
+.map-wrap {
+  position: relative;
   border: 1px solid var(--rule);
+  border-radius: var(--r-card);
+  overflow: hidden;
 }
-.svc { background: var(--surface); padding: var(--s-3); }
-.svc__num { font-family: var(--font-display); font-style: italic; font-size: var(--fs-400); color: var(--accent); line-height: 1; }
-.svc h3 { font-size: 1.1rem; margin: 0.4rem 0 0.3rem; }
-.svc p { margin: 0; color: var(--muted); font-size: var(--fs-300); line-height: 1.45; }
-@media (min-width: 62rem) { .svc-list { grid-template-columns: repeat(3, 1fr); } }
+.map { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(0.15); }
+.map-wrap--wide {
+  margin-top: var(--s-4);
+  aspect-ratio: 21 / 8;
+  min-height: clamp(11rem, 22vh, 16rem);
+}
 
 /* ============================================================
-   Reviews, scrolling cards that read as Google
+   Reviews, scrolling cards that read as Google. Black section.
    ============================================================ */
 #reviews .shell { gap: var(--s-4); }
 .reviews__head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--s-3); flex-wrap: wrap; }
@@ -446,7 +501,7 @@ a.tel:hover { color: var(--accent); }
 }
 .gcard__top { display: flex; align-items: center; gap: 0.6rem; }
 .gcard__avatar {
-  width: 2rem; height: 2rem;
+  width: 2.1rem; height: 2.1rem;
   border-radius: 999px;
   display: grid; place-items: center;
   font-family: var(--font-body);
@@ -455,7 +510,9 @@ a.tel:hover { color: var(--accent); }
   color: #fff;
   font-size: 0.85rem;
   flex: 0 0 auto;
+  overflow: hidden;
 }
+.gcard__avatar img { width: 100%; height: 100%; object-fit: cover; }
 .gcard__who { line-height: 1.15; display: flex; flex-direction: column; }
 .gcard__name { font-weight: 600; color: var(--ink-strong); font-size: 0.85rem; }
 .gcard__when { font-size: 0.7rem; color: var(--muted); }
@@ -488,89 +545,6 @@ a.tel:hover { color: var(--accent); }
 .reviews-link:hover .reviews-link__arrow { transform: translateX(3px); }
 
 /* ============================================================
-   Recent work, big-picture carousel
-   ============================================================ */
-.gallery__head { max-width: 40em; margin-bottom: var(--s-2); }
-.gallery__head h2 { margin: 0 0 var(--s-1); font-size: clamp(1.5rem, 3.5vw, 2rem); }
-.gallery__head p { margin: 0; }
-
-.carousel {
-  position: relative;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: var(--s-2);
-}
-.carousel__viewport {
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  display: flex;
-  gap: var(--s-2);
-  padding-bottom: var(--s-1);
-  -webkit-overflow-scrolling: touch;
-}
-.carousel__viewport::-webkit-scrollbar { height: 6px; }
-.carousel__viewport::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 999px; }
-@media (prefers-reduced-motion: reduce) {
-  .carousel__viewport { scroll-snap-type: none; scroll-behavior: auto; }
-}
-
-.slide {
-  flex: 0 0 clamp(78vw, 60vw, 42rem);
-  scroll-snap-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin: 0;
-}
-.slide__frame {
-  position: relative;
-  height: clamp(14rem, 42svh, 26rem);
-  background: repeating-linear-gradient(135deg, var(--surface-2) 0 12px, var(--surface) 12px 24px);
-  border: 1px solid var(--rule);
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: var(--s-1);
-  overflow: hidden;
-  min-height: 0;
-}
-.slide__frame small { font-size: 0.7rem; color: var(--muted); letter-spacing: var(--track-label); text-transform: uppercase; }
-.slide__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.slide figcaption { font-size: var(--fs-300); color: var(--muted); }
-
-.carousel__btn {
-  display: grid;
-  place-items: center;
-  width: 2.4rem;
-  height: 2.4rem;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--accent);
-  cursor: pointer;
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
-}
-.carousel__btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-.carousel__btn svg { width: 1.1rem; height: 1.1rem; }
-/* On narrow screens, drop the buttons (swipe instead) to save horizontal space */
-@media (max-width: 40rem) {
-  .carousel { grid-template-columns: 1fr; }
-  .carousel__btn { display: none; }
-}
-
-/* ============================================================
-   Service area
-   ============================================================ */
-.area__grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); align-items: start; }
-.area__lead h2 { margin: 0 0 var(--s-2); }
-.area__lead p { font-size: var(--fs-500); margin: 0; }
-.area__list { columns: 2; column-gap: var(--s-5); font-size: var(--fs-300); margin: 0; list-style: none; padding: 0; }
-.area__list li { break-inside: avoid; padding-block: 0.3em; border-bottom: 1px solid var(--rule); }
-@media (min-width: 48rem) { .area__grid { grid-template-columns: 1fr 1fr; gap: var(--s-6); } }
-
-/* ============================================================
    FAQ
    ============================================================ */
 .faq { max-width: var(--measure); }
@@ -600,27 +574,27 @@ a.tel:hover { color: var(--accent); }
 @media (min-width: 52rem) { .contact__grid { grid-template-columns: 1fr 1fr; gap: var(--s-5); } }
 
 .contact__side { display: flex; flex-direction: column; gap: var(--s-3); }
+/* Phone-led CTA panel replaces the duplicate form here (the form now lives
+   in the hero). Keeps the contact section useful without a second form. */
+.contact__cta {
+  display: flex; flex-direction: column; gap: var(--s-2);
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-card);
+}
+.contact__cta-lead { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: var(--ink-strong); margin: 0; max-width: none; }
+.contact__cta-phone { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.9rem, 4.5vw, 2.6rem); line-height: 1.05; color: var(--accent); }
+.contact__cta-sub { color: var(--muted); margin: 0; max-width: 30em; }
+.contact__cta .btn { align-self: flex-start; margin-top: 0.4rem; }
+.contact__cta-note { font-size: var(--fs-300); color: var(--muted); margin: 0.2rem 0 0; }
 .contact__dl { margin: 0; }
 .contact__dl dt { font-size: 0.7rem; text-transform: uppercase; letter-spacing: var(--track-label); color: var(--muted); margin-top: var(--s-2); }
 .contact__dl dt:first-child { margin-top: 0; }
 .contact__dl dd { margin: 0.15rem 0 0; font-size: 0.95rem; }
 
-/* Shared map frame. --wide variant = short banner for the service area. */
-.map-wrap {
-  position: relative;
-  border: 1px solid var(--rule);
-  border-radius: var(--r-card);
-  overflow: hidden;
-}
-.map { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(0.15); }
-.map-wrap--wide {
-  margin-top: var(--s-4);
-  aspect-ratio: 21 / 8;
-  min-height: clamp(11rem, 22vh, 16rem);
-}
-
 /* ============================================================
-   Forms (shared by hero + contact)
+   Forms (contact)
    ============================================================ */
 .form { display: grid; gap: 0.6rem; }
 .form__title { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--ink-strong); margin: 0; }
@@ -643,24 +617,30 @@ a.tel:hover { color: var(--accent); }
 .form__sent { color: var(--accent); font-weight: 600; font-size: var(--fs-300); margin: 0; }
 
 /* ============================================================
-   Footer (not a full-screen section; flows after contact)
+   Footer. Black. Logo on a white chip (true colors). Three columns:
+   services, service-area cities, contact. Matches reference structure.
    ============================================================ */
-.footer { background: var(--ink-deep); color: var(--accent-on-dark); padding-block: var(--s-5); }
+.footer { background: var(--ink-deep); color: #b8b8b8; padding-block: var(--s-5); }
 .footer__inner {
   max-width: var(--measure-wide); margin-inline: auto; padding-inline: var(--gutter);
   display: grid; grid-template-columns: 1fr; gap: var(--s-4);
 }
-.footer__brand { color: #fff; }
-.footer__logo { height: 3.5rem; width: auto; margin-bottom: 0.5rem; filter: brightness(0) invert(1); }
-.footer__brand .alt { font-size: var(--fs-300); color: var(--accent-on-dark); margin-top: 0.2rem; }
+.footer__brand .footer__logo {
+  height: clamp(3rem, 8vw, 3.8rem);
+  width: auto;
+  display: block;
+}
+.footer__brand .footer__tag { font-size: var(--fs-300); color: #b8b8b8; margin-top: 0.6rem; max-width: 26em; }
 .footer h3 { color: #fff; font-size: var(--fs-300); text-transform: uppercase; letter-spacing: var(--track-label); font-family: var(--font-body); font-weight: 600; margin: 0 0 var(--s-2); }
-.footer ul { list-style: none; margin: 0; padding: 0; font-size: var(--fs-300); display: grid; gap: 0.35em; }
-.footer a:hover { color: #fff; }
-.footer__legal { grid-column: 1 / -1; border-top: 1px solid var(--rule-dark); margin-top: var(--s-3); padding-top: var(--s-3); font-size: var(--fs-300); color: var(--accent-on-dark); display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); justify-content: space-between; }
+.footer ul { list-style: none; margin: 0; padding: 0; font-size: var(--fs-300); display: grid; gap: 0.4em; }
+.footer ul a:hover { color: #fff; }
+.footer a { color: #b8b8b8; }
+.footer__legal { grid-column: 1 / -1; border-top: 1px solid var(--rule-dark); margin-top: var(--s-3); padding-top: var(--s-3); font-size: var(--fs-300); color: #9a9a9a; display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); justify-content: space-between; align-items: center; }
 .footer__kelvo-link { display: inline-flex; align-items: center; border: 0; line-height: 0; }
 .footer__kelvo-link:hover { opacity: 0.8; }
 .footer__kelvo-logo { height: 1.4em; width: auto; display: block; }
-@media (min-width: 48rem) { .footer__inner { grid-template-columns: 1.4fr 1fr 1fr; } }
+@media (min-width: 48rem) { .footer__inner { grid-template-columns: 1.5fr 1fr 1fr 1fr; } }
+@media (max-width: 47.99rem) { .footer__brand { grid-column: 1 / -1; } }
 
 /* ============================================================
    Motion. ONE orchestrated hero load-in. Nothing else animates on scroll.
@@ -672,9 +652,10 @@ a.tel:hover { color: var(--accent); }
 .is-loaded .hero__left > *:nth-child(3) { animation-delay: 180ms; }
 .is-loaded .hero__left > *:nth-child(4) { animation-delay: 240ms; }
 .is-loaded .hero__left > *:nth-child(5) { animation-delay: 300ms; }
-.hero__right { opacity: 0; }
-.is-loaded .hero__right { animation: rise var(--dur) var(--ease) forwards; animation-delay: 200ms; }
+.hero__bg { transform: scale(1.04); }
+.is-loaded .hero__bg { animation: herobg 1.4s var(--ease) forwards; }
 @keyframes rise { to { opacity: 1; transform: none; } }
+@keyframes herobg { to { transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) {
-  .hero__left > *, .hero__right { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .hero__left > *, .hero__bg { opacity: 1 !important; transform: none !important; animation: none !important; }
 }

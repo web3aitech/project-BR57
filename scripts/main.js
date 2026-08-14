@@ -1,8 +1,8 @@
 /* ============================================================
-   Better Roofing 57. Minimal interactivity.
-   One orchestrated hero load-in + FAQ accordion + two estimate
-   forms (both post to Web3Forms) + a past-work carousel.
-   No scroll-fade-everywhere. Restraint.
+   Tennessee Septic and Pumping LLC. Minimal interactivity.
+   One orchestrated hero load-in + a transparent header that turns
+   solid on scroll + FAQ accordion + a service request form
+   (posts to Web3Forms). No scroll-fade-everywhere. Restraint.
    ============================================================ */
 
 (function () {
@@ -10,6 +10,18 @@
 
   // ---- Hero load-in: the one orchestrated moment ----
   document.documentElement.classList.add("is-loaded");
+
+  // ---- Header: transparent over the hero, solid white once scrolled ----
+  var head = document.getElementById("site-head");
+  if (head) {
+    var toggle = function () {
+      if (window.scrollY > 40) head.classList.add("is-scrolled");
+      else head.classList.remove("is-scrolled");
+    };
+    toggle();
+    window.addEventListener("scroll", toggle, { passive: true });
+    window.addEventListener("resize", toggle, { passive: true });
+  }
 
   // ---- Footer year ----
   var y = document.getElementById("year");
@@ -46,75 +58,44 @@
     });
   });
 
-  // ---- Estimate forms (hero + contact). Both post to Web3Forms. ----
-  // Replace the access_key value in the HTML with the client's key.
-  // With the placeholder key still in place, the form shows a local
-  // confirmation without sending, so the site works for review before
-  // the client signs up.
+  // ---- Service request form (hero + contact). Posts to a Make webhook. ----
+  // The webhook receives a JSON object with the form fields and the
+  // subject/from_name hidden values. Make responds with 2xx on success
+  // (often an empty body), so we treat any 2xx as success.
+  var WEBHOOK = "https://hook.us2.make.com/jmuvtw4jfyjjia5zpfrrmk3a2w4uatlr";
   var forms = document.querySelectorAll("form[data-estimate]");
   forms.forEach(function (form) {
     var sent = form.querySelector(".form__sent");
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var key = (form.querySelector('[name="access_key"]') || {}).value;
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
 
-      // Placeholder key: show confirmation locally without sending.
-      if (!key || key.indexOf("REPLACE_WITH") === 0) {
-        if (sent) sent.hidden = false;
-        form.reset();
-        return;
-      }
-
-      var body = new FormData(form);
-      fetch("https://api.web3forms.com/submit", {
+      // Build a JSON payload from the form's named fields.
+      var payload = {};
+      new FormData(form).forEach(function (value, key) {
+        if (key === "_botcheck") return; // honeypot, drop it
+        payload[key] = value;
+      });
+      // text/plain body avoids a CORS preflight; Make reads JSON fine.
+      fetch(WEBHOOK, {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: body,
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(payload),
       })
-        .then(function (r) { return r.json(); })
-        .then(function (res) {
-          if (res && res.success) {
+        .then(function (r) {
+          if (r.ok) {
             if (sent) sent.hidden = false;
             form.reset();
           } else {
-            alert("Sorry, something went wrong. Please call (901) 484-5717.");
+            throw new Error("Bad status " + r.status);
           }
         })
         .catch(function () {
-          alert("Sorry, the form didn't send. Please call (901) 484-5717.");
+          alert("Sorry, the form didn't send. Please call (931) 560-9818.");
         });
     });
-  });
-
-  // ---- Past-work carousel: prev / next buttons scroll one slide ----
-  var carousels = document.querySelectorAll("[data-carousel]");
-  carousels.forEach(function (carousel) {
-    var track = carousel.querySelector("[data-track]");
-    var prev = carousel.querySelector("[data-prev]");
-    var next = carousel.querySelector("[data-next]");
-    if (!track) return;
-
-    function step() {
-      var slide = track.querySelector(".slide");
-      if (!slide) return track.clientWidth * 0.8;
-      // gap + slide width advances roughly one slide
-      var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 16;
-      return slide.getBoundingClientRect().width + gap;
-    }
-
-    if (prev) {
-      prev.addEventListener("click", function () {
-        track.scrollBy({ left: -step(), behavior: "smooth" });
-      });
-    }
-    if (next) {
-      next.addEventListener("click", function () {
-        track.scrollBy({ left: step(), behavior: "smooth" });
-      });
-    }
   });
 })();

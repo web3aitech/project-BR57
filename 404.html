@@ -4,14 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="refresh" content="8; url=/" />
-  <title>Page not found. Better Roofing 57.</title>
+  <title>Page not found. Tennessee Septic and Pumping.</title>
   <meta name="robots" content="noindex" />
-  <meta name="theme-color" content="#1b3a6b" />
-  <link rel="icon" type="image/png" href="/assets/images/better-roofing-57-favicon.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon-180x180.png" />
+  <meta name="theme-color" content="#e2561a" />
+  <link rel="icon" href="/assets/images/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="/assets/images/apple-touch-icon-180.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon-180.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles/tokens.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -32,7 +33,7 @@
     a { color: inherit; text-decoration: none; }
     :where(a, button):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-    /* Minimal sticky header, same as the site */
+    /* Minimal sticky header, same as the site (white bar) */
     .site-head {
       position: sticky; top: 0; z-index: 50;
       background: var(--surface);
@@ -46,7 +47,7 @@
       display: flex; align-items: center; justify-content: space-between;
       gap: var(--s-3);
     }
-    .brand__logo { height: clamp(2.2rem, 5.5vw, 3rem); width: auto; display: block; }
+    .brand__logo { height: clamp(2.2rem, 6vw, 3.1rem); width: auto; display: block; }
     .nav { display: flex; align-items: center; gap: var(--s-3); }
     .nav__phone { font-size: var(--fs-300); font-weight: 600; color: var(--ink-strong); white-space: nowrap; }
     .btn {
@@ -68,12 +69,12 @@
     .nf { flex: 1; display: grid; place-items: center; padding-inline: var(--gutter); }
     .nf__inner { max-width: 40rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--s-2); }
     .label {
-      font-family: var(--font-label); font-size: var(--fs-300); font-weight: 500;
+      font-family: var(--font-label); font-size: var(--fs-300); font-weight: 600;
       text-transform: uppercase; letter-spacing: var(--track-label);
       color: var(--accent); margin: 0;
     }
     .nf__num {
-      font-family: var(--font-display); font-weight: 700; font-style: italic;
+      font-family: var(--font-display); font-weight: 800;
       font-size: clamp(5rem, 22vw, 11rem); line-height: 0.9; letter-spacing: -0.04em;
       color: var(--accent); margin: 0;
     }
@@ -91,7 +92,7 @@
 
     /* Footer strip */
     .footer {
-      background: var(--ink-deep); color: var(--accent-on-dark);
+      background: var(--ink-deep); color: #b8b8b8;
       padding-block: var(--s-3);
     }
     .footer__inner {
@@ -113,12 +114,12 @@
 
   <header class="site-head">
     <div class="site-head__inner">
-      <a class="brand" href="/" aria-label="Better Roofing 57, home">
-        <img class="brand__logo" src="/assets/images/better-roofing-57-logo.webp" alt="Better Roofing 57" />
+      <a class="brand" href="/" aria-label="Tennessee Septic and Pumping, home">
+        <img class="brand__logo" src="/assets/images/logo.webp" alt="Tennessee Septic and Pumping LLC" />
       </a>
       <nav class="nav">
-        <a class="nav__phone tel" href="tel:+19014845717">(901) 484-5717</a>
-        <a class="btn nav__cta" href="tel:+19014845717">Call now</a>
+        <a class="nav__phone tel" href="tel:+19315609818">(931) 560-9818</a>
+        <a class="btn nav__cta" href="tel:+19315609818">Call now</a>
       </nav>
     </div>
   </header>
@@ -126,22 +127,22 @@
   <main class="nf">
     <div class="nf__inner">
       <p class="label">Error 404</p>
-      <div class="nf__num" aria-hidden="true">57</div>
-      <h1 class="nf__title">This page slipped off the roof.</h1>
+      <div class="nf__num" aria-hidden="true">404</div>
+      <h1 class="nf__title">This page took a wrong turn.</h1>
       <p class="nf__sub">The page you were looking for is not here. It may have been moved or removed. We are taking you back to the home page in a moment.</p>
       <div class="nf__ctas">
         <a class="btn" href="/">Go to homepage</a>
-        <a class="btn btn--ghost" href="/#contact">Get a free estimate</a>
+        <a class="btn btn--ghost" href="/#contact">Get a quote</a>
       </div>
-      <p class="nf__back">Or call us at <a href="tel:+19014845717">(901) 484-5717</a>.</p>
+      <p class="nf__back">Or call us at <a href="tel:+19315609818">(931) 560-9818</a>.</p>
       <p class="nf__count" id="count">Redirecting in 8 seconds…</p>
     </div>
   </main>
 
   <footer class="footer">
     <div class="footer__inner">
-      <span>© <span id="year">2026</span> Better Roofing 57 LLC. Cordova & Memphis metro.</span>
-      <span>Residential & commercial roofing. Licensed #8337 (TN).</span>
+      <span>© <span id="year">2026</span> Tennessee Septic and Pumping LLC. Columbia, TN and the surrounding area.</span>
+      <span>Septic pumping and installation.</span>
     </div>
   </footer>
 

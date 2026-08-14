@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://betterroofing57.com/sitemap.xml
+Sitemap: https://tennesseesepticandpumping.com/sitemap.xml

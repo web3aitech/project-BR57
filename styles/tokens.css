@@ -1,35 +1,42 @@
 /* ============================================================
-   Better Roofing 57. Design Tokens.
-   Dark-blue accent on white; one navy section + footer.
+   Tennessee Septic and Pumping LLC. Design Tokens.
+   Orange / black / white (the client's own brand colors, per
+   their Facebook visuals). One black section + black footer
+   for rhythm. Orange is the one accent, used with discipline.
    Swap brand values here to re-skin a future client site.
    ============================================================ */
 
 :root {
-  /* ---- Color (client direction: dark-blue accent on white) ----
-     ink     = neutral text (charcoal, not pure black)
-     surface = white page (NOT warm "AI sand" cream)
-     accent  = dark blue, the one brand color
-     ink-deep= navy for the one dark section + footer */
-  --ink:        #3a3f45;   /* body text */
-  --ink-strong: #1c1f23;   /* headings */
-  --muted:      #6b7178;   /* secondary text */
-  --surface:    #ffffff;   /* page surface, white */
-  --surface-2:  #f5f6f8;   /* card / alt surface */
-  --rule:       #e6e8eb;   /* divider on light */
-  --accent:     #1b3a6b;   /* dark blue, the one accent */
-  --accent-700: #14284c;   /* pressed / hover */
-  --accent-050: #eef2f8;   /* subtle blue tint (focus) */
-  --accent-on-dark: #8fb0d9; /* light blue for labels/marks on dark sections */
-  --ink-deep:   #152a4e;   /* dark-navy section + footer bg */
-  --rule-dark:  #2c3f5e;  /* divider on dark */
-  --gold:       #f9ab00;  /* Google review star gold */
+  /* ---- Color (client direction: orange accent on white,
+     black for text + one dark section + footer) ----
+     ink        = neutral near-black text
+     ink-strong = headings / near-black
+     surface    = white page
+     accent     = the client's orange, the one brand color
+     ink-deep   = near-black for the one dark section + footer bg */
+  --ink:        #202020;     /* body text */
+  --ink-strong: #111111;     /* headings */
+  --muted:      #6a6a6a;     /* secondary text */
+  --surface:    #ffffff;     /* page surface, white */
+  --surface-2:  #f5f5f5;     /* card / alt surface, neutral cool (not warm cream) */
+  --rule:       #e6e6e6;    /* divider on light */
+  --accent:     #e2561a;     /* client orange, the one accent */
+  --accent-700: #b8430f;     /* pressed / hover */
+  --accent-050: #fde8de;     /* subtle orange tint (focus) */
+  --accent-on-dark: #ef7a44; /* light orange for labels / marks on dark sections */
+  --ink-deep:   #111111;     /* near-black section + footer bg */
+  --rule-dark:  #2a2a2a;    /* divider on dark */
+  --gold:       #f9ab00;    /* Google review star gold */
 
   /* semantic alias kept for button hover state */
   --accent-press: var(--accent-700);
 
-  /* ---- Type (paired display + body; no Inter/Geist/one-sans) ---- */
-  --font-display: "Libre Caslon Text", "Source Serif 4", Georgia, "Times New Roman", serif;
-  --font-body: "IBM Plex Sans", "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* ---- Type (paired display + body; no Inter/Geist/one-sans).
+     Archivo = architectural industrial grotesque for an excavation
+     trade; Public Sans = humanist body. Different families from
+     the previous client site so the two do not look alike. ---- */
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Public Sans", "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-label: var(--font-body); /* uppercase + tracking, NOT monospace */
 
   /* Modular type scale (1.250). Compact: sections are full-viewport. */
@@ -39,7 +46,7 @@
   --fs-600: 1.35rem;     /* h3 */
   --fs-700: 1.85rem;     /* h2 */
   --fs-800: clamp(2.25rem, 5.5vw, 3.4rem);  /* h1, hero */
-  --fs-900: clamp(3.5rem, 14vw, 8rem);      /* the 57, signature */
+  --fs-900: clamp(3.5rem, 14vw, 8rem);      /* big display numeral */
 
   /* Tight, considered leading/tracking (sloppy defaults are a tell) */
   --lh-tight: 1.05;     /* display */
@@ -58,12 +65,12 @@
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
 
   /* ---- Full-viewport sections ----
-     Each section fills exactly the visible area BELOW the sticky header,
+     Each section fills exactly the visible area below the sticky header,
      so a section + the header = one screen with no internal scroll.
      100svh handles mobile browser chrome. */
   --header-h: 4.25rem;
   --section-h: calc(100svh - 4.25rem);
-  --section-pad: clamp(2.25rem, 5vh, 3.5rem); /* uniform top & bottom for every section = consistent medium rhythm */
+  --section-pad: clamp(2.25rem, 5vh, 3.5rem); /* uniform top & bottom for every section */
 
   /* ---- Layout ---- */
   --measure: 68rem;
@@ -72,7 +79,7 @@
   /* ---- Edges / shape ----
      Scale radius with element size; nested radii differ.
      Avoid uniform rounded-everywhere (the tell). */
-  --r-sharp: 0;          /* cards, dividers, hard edge = structural */
+  --r-sharp: 0;          /* dividers, hard edge = structural */
   --r-button: 999px;     /* pill CTA only */
   --r-input: 2px;        /* form fields, near-square, deliberate */
   --r-card: 10px;       /* review / gallery cards, modest */
