@@ -458,6 +458,7 @@ a.tel:hover { color: var(--accent); }
   margin-top: var(--s-4);
   aspect-ratio: 21 / 8;
   min-height: clamp(11rem, 22vh, 16rem);
+  max-width: 100%;  /* cap at container so min-height can't blow the width past the viewport on mobile */
 }
 
 /* ============================================================
